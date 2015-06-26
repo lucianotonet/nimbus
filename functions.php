@@ -467,7 +467,7 @@ function nimbus_register_meta_boxes( $meta_boxes )
         'title'      => __( 'Slides', 'nimbus' ),
 
         // Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
-        'post_types' => array( 'slider' ),
+        'post_types' => array( 'page' ),
 
         // Where the meta box appear: normal (default), advanced, side. Optional.
         'context'    => 'normal',
@@ -480,92 +480,22 @@ function nimbus_register_meta_boxes( $meta_boxes )
 
         // List of meta fields
         'fields'     => array(
-            // TEXT
+            // WYSIWYG/RICH TEXT EDITOR
             array(
-                // Field name - Will be used as label
-                'name'  => __( 'Text', 'nimbus' ),
-                // Field ID, i.e. the meta key
-                'id'    => "{$prefix}text",
-                // Field description (optional)
-                'desc'  => __( 'Text description', 'nimbus' ),
-                'type'  => 'text',
-                // Default value (optional)
-                'std'   => __( 'Default text value', 'nimbus' ),
-                // CLONES: Add to make the field cloneable (i.e. have multiple value)
-                'clone' => true,
-            ),
-            // CHECKBOX
-            array(
-                'name' => __( 'Checkbox', 'nimbus' ),
-                'id'   => "{$prefix}checkbox",
-                'type' => 'checkbox',
-                // Value can be 0 or 1
-                'std'  => 1,
-            ),
-            // RADIO BUTTONS
-            array(
-                'name'    => __( 'Radio', 'nimbus' ),
-                'id'      => "{$prefix}radio",
-                'type'    => 'radio',
-                // Array of 'value' => 'Label' pairs for radio options.
-                // Note: the 'value' is stored in meta field, not the 'Label'
+                'name'    => __( 'WYSIWYG / Rich Text Editor', 'nimbus' ),
+                'id'      => "{$prefix}wysiwyg",
+                'type'    => 'wysiwyg',
+                // Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
+                'raw'     => false,
+                'std'     => __( 'WYSIWYG default value', 'nimbus' ),
+
+                // Editor settings, see wp_editor() function: look4wp.com/wp_editor
                 'options' => array(
-                    'value1' => __( 'Label1', 'nimbus' ),
-                    'value2' => __( 'Label2', 'nimbus' ),
+                    'textarea_rows' => 4,
+                    'teeny'         => true,
+                    'media_buttons' => false,
                 ),
             ),
-            // SELECT BOX
-            array(
-                'name'        => __( 'Select', 'nimbus' ),
-                'id'          => "{$prefix}select",
-                'type'        => 'select',
-                // Array of 'value' => 'Label' pairs for select box
-                'options'     => array(
-                    'value1' => __( 'Label1', 'nimbus' ),
-                    'value2' => __( 'Label2', 'nimbus' ),
-                ),
-                // Select multiple values, optional. Default is false.
-                'multiple'    => false,
-                'std'         => 'value2',
-                'placeholder' => __( 'Select an Item', 'nimbus' ),
-            ),
-            // HIDDEN
-            array(
-                'id'   => "{$prefix}hidden",
-                'type' => 'hidden',
-                // Hidden field must have predefined value
-                'std'  => __( 'Hidden value', 'nimbus' ),
-            ),
-            // PASSWORD
-            array(
-                'name' => __( 'Password', 'nimbus' ),
-                'id'   => "{$prefix}password",
-                'type' => 'password',
-            ),
-            // TEXTAREA
-            array(
-                'name' => __( 'Textarea', 'nimbus' ),
-                'desc' => __( 'Textarea description', 'nimbus' ),
-                'id'   => "{$prefix}textarea",
-                'type' => 'textarea',
-                'cols' => 20,
-                'rows' => 3,
-            ),
-        ),
-        'validation' => array(
-            'rules'    => array(
-                "{$prefix}password" => array(
-                    'required'  => true,
-                    'minlength' => 7,
-                ),
-            ),
-            // optional override of default jquery.validate messages
-            'messages' => array(
-                "{$prefix}password" => array(
-                    'required'  => __( 'Password is required', 'nimbus' ),
-                    'minlength' => __( 'Password must be at least 7 characters', 'nimbus' ),
-                ),
-            )
         )
     );
 

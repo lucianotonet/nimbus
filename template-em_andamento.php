@@ -16,42 +16,43 @@
 				);
 
 				$subpages = get_posts( $args);
-				// echo "<pre>";
-				// var_dump($subpages);
-				// echo "</pre>";
-				// exit;
-
+				
 				for ($i = 0; $i < count($subpages); $i++) { 
 					$subpage = $subpages[ $i ];
+			
 					?>					
 					<!-- slide1-andamento -->
-					<div class="item <?php echo ($i == 0) ? 'active': ''; ?>">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/em-andamento/alta-citta/fundo-emandamento.jpg" class="img-responsive">
-						<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
-							<div class="carousel-caption">								
-								<h1><?php echo $post->post_title ?></br><hr></br>
-									<a class="navbar-brand logo" href="#header" style"background:transparent;">
-										<img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" alt="Logo" class="img-responsive">
-									</a>
-								</h1></br>
-								<h3><?php echo $subpage->post_title; ?></h3></br>
-								<?php echo $subpage->post_content; ?>
+					<div class="item <?php echo ($i == 0) ? 'active': ''; ?>" style="background: url(<?php echo get_template_directory_uri(); ?>/img/em-andamento/alta-citta/fundo-emandamento.jpg)">
+						
+						<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/em-andamento/alta-citta/fundo-emandamento.jpg" class="img-responsive"> -->
+						
+						<div class="container">								
+							<div class="row">		
+								<div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">									
+									<h1><?php echo $post->post_title ?></br><hr></br>
+										<a class="navbar-brand logo" href="#header" style"background:transparent;">
+											<?php 
+												echo get_the_post_thumbnail( $subpage->ID, 'full' );										
+											?>
+											<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" alt="Logo" class="img-responsive"> -->
+										</a>
+									</h1>
+										</br>
+									<h3>
+										<?php echo $subpage->post_title; ?>
+										<br>
+										<?php echo apply_filters('the_content', $subpage->post_content); ?>
+									</h3>
+									</br>
+
+								</div>
+
+								<div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">									
+									<?php echo apply_filters('the_content', rwmb_meta( 'nimbus_wysiwyg', $args = array(), $subpage->ID ) ); ?>																
+								</div>								
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-							<div class="mansory">
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:5px;">
-									<img src="<?php echo get_template_directory_uri(); ?>/img\em-andamento\alta-citta\1.jpg" class="img-responsive" />
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 5px; ">
-									<img src="<?php echo get_template_directory_uri(); ?>/img\em-andamento\alta-citta\2.jpg" class="img-responsive" style="padding-bottom: 7px;" />
-									<img src="<?php echo get_template_directory_uri(); ?>/img\em-andamento\alta-citta\3.jpg" class="img-responsive" />
-								</div>
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 5px;">
-									<img src="<?php echo get_template_directory_uri(); ?>/img\em-andamento\alta-citta\4.jpg" class="img-responsive" />
-								</div>
-							</div>
-						</div>
+						
 					</div>			
 
 			<?php } ?>

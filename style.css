@@ -117,8 +117,8 @@ of those sections to manage the look and feel of the site. */
 }
 
 .carousel-caption {
-  left: 20%;
-  right: 20%;
+  /* left: 20%; */
+  /* right: 20%; */
   padding-bottom: 30px;
   text-align: right;
 }
@@ -159,8 +159,8 @@ of those sections to manage the look and feel of the site. */
 }
 }
 .carousel-caption {
-  left: 20%;
-  right: 20%;
+  /* left: 20%; */
+  /* right: 20%; */
   padding-bottom: 30px;
   text-align: right;
 }
@@ -251,8 +251,8 @@ of those sections to manage the look and feel of the site. */
  width: 100%;
 }
 #emandamento .carousel .carousel-caption {
-  left: 20%;
-  right: 20%;
+  /* left: 20%; */
+  /* right: 20%; */
   padding-bottom: 30px;
   text-align: left;
 }
