@@ -1,7 +1,7 @@
 <?php
 /*
  *  Author: Todd Motto | @toddmotto
- *  URL: html5blank.com | @html5blank
+ *  URL: nimbus.com | @nimbus
  *  Custom functions, support, custom post types and more.
  */
 
@@ -55,7 +55,7 @@ if (function_exists('add_theme_support'))
     add_theme_support('automatic-feed-links');
 
     // Localisation Support
-    load_theme_textdomain('html5blank', get_template_directory() . '/languages');
+    load_theme_textdomain('nimbus', get_template_directory() . '/languages');
 }
 
 /*------------------------------------*\
@@ -63,7 +63,7 @@ if (function_exists('add_theme_support'))
 \*------------------------------------*/
 
 // HTML5 Blank navigation
-function html5blank_nav()
+function nimbus_nav()
 {
 	wp_nav_menu(
 	array(
@@ -97,15 +97,6 @@ function nimbus_header_scripts()
     }
 }
 
-// Load HTML5 Blank conditional scripts
-function html5blank_conditional_scripts()
-{
-    if (is_page('pagenamehere')) {
-        wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
-        wp_enqueue_script('scriptname'); // Enqueue it!
-    }
-}
-
 // Load HTML5 Blank styles
 function nimbus_styles()
 {
@@ -127,9 +118,9 @@ function nimbus_styles()
 function register_html5_menu()
 {
     register_nav_menus(array( // Using array to specify more menus if needed
-        'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
-        'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-        'extra-menu' => __('Extra Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
+        'header-menu' => __('Header Menu', 'nimbus'), // Main Navigation
+        'sidebar-menu' => __('Sidebar Menu', 'nimbus'), // Sidebar Navigation
+        'extra-menu' => __('Extra Menu', 'nimbus') // Extra Navigation if needed (duplicate as many as you need!)
     ));
 }
 
@@ -175,8 +166,8 @@ if (function_exists('register_sidebar'))
 {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
-        'name' => __('Widget Area 1', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 1', 'nimbus'),
+        'description' => __('Description for this widget-area...', 'nimbus'),
         'id' => 'widget-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -186,8 +177,8 @@ if (function_exists('register_sidebar'))
 
     // Define Sidebar Widget Area 2
     register_sidebar(array(
-        'name' => __('Widget Area 2', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 2', 'nimbus'),
+        'description' => __('Description for this widget-area...', 'nimbus'),
         'id' => 'widget-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -252,7 +243,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'nimbus') . '</a>';
 }
 
 // Remove Admin bar
@@ -275,7 +266,7 @@ function remove_thumbnail_dimensions( $html )
 }
 
 // Custom Gravatar in Settings > Discussion
-function html5blankgravatar ($avatar_defaults)
+function nimbusgravatar ($avatar_defaults)
 {
     $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
@@ -293,7 +284,7 @@ function enable_threaded_comments()
 }
 
 // Custom Comments Callback
-function html5blankcomments($comment, $args, $depth)
+function nimbuscomments($comment, $args, $depth)
 {
 	$GLOBALS['comment'] = $comment;
 	extract($args, EXTR_SKIP);
@@ -342,11 +333,10 @@ function html5blankcomments($comment, $args, $depth)
 
 // Add Actions
 add_action('init', 'nimbus_header_scripts'); // Add Custom Scripts to wp_head
-add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'nimbus_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
-add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
+// add_action('init', 'create_post_type_slider'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 
@@ -365,7 +355,7 @@ remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Add Filters
-add_filter('avatar_defaults', 'html5blankgravatar'); // Custom Gravatar in Settings > Discussion
+add_filter('avatar_defaults', 'nimbusgravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
@@ -396,43 +386,520 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 	Custom Post Types
 \*------------------------------------*/
 
-// Create 1 Custom Post type for a Demo, called HTML5-Blank
-function create_post_type_html5()
+// function create_post_type_slider()
+// {
+//     register_taxonomy_for_object_type('category', 'slider'); // Register Taxonomies for Category
+//     register_taxonomy_for_object_type('post_tag', 'slider');
+//     register_post_type('slider', // Register Custom Post Type
+//         array(
+//         'labels' => array(
+//             'name' => __('Sliders', 'nimbus'), // Rename these to suit
+//             'singular_name' => __('Sliders', 'nimbus'),
+//             'add_new' => __('Adicionar novo', 'nimbus'),
+//             'add_new_item' => __('Adicionar novo Slider', 'nimbus'),
+//             'edit' => __('Editar', 'nimbus'),
+//             'edit_item' => __('Editar Slider', 'nimbus'),
+//             'new_item' => __('Novo Slider', 'nimbus'),
+//             'view' => __('Ver Slider', 'nimbus'),
+//             'view_item' => __('Ver Slider', 'nimbus'),
+//             'search_items' => __('Procurar Slider', 'nimbus'),
+//             'not_found' => __('Nenhum Sliders encontrado', 'nimbus'),
+//             'not_found_in_trash' => __('Nenhum Sliders encontrado na lixeira', 'nimbus')
+//         ),
+//         'public' => true,
+//         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+//         'has_archive' => true,
+//         'supports' => array(
+//             'title',
+//             'editor',
+//             'excerpt',
+//             'thumbnail'
+//         ), // Go to Dashboard Custom HTML5 Blank post for supports
+//         'can_export' => true, // Allows export in Tools > Export
+//         'taxonomies' => array(
+//             'post_tag',
+//             'category'
+//         ) // Add Category and Post Tags support
+//     ));
+// }
+
+
+/**
+ * Registering meta boxes
+ *
+ * All the definitions of meta boxes are listed below with comments.
+ * Please read them CAREFULLY.
+ *
+ * You also should read the changelog to know what has been changed before updating.
+ *
+ * For more information, please visit:
+ * @link http://metabox.io/docs/registering-meta-boxes/
+ */
+
+
+add_filter( 'rwmb_meta_boxes', 'nimbus_register_meta_boxes' );
+
+/**
+ * Register meta boxes
+ *
+ * Remember to change "nimbus" to actual prefix in your project
+ *
+ * @param array $meta_boxes List of meta boxes
+ *
+ * @return array
+ */
+function nimbus_register_meta_boxes( $meta_boxes )
 {
-    register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
-    register_taxonomy_for_object_type('post_tag', 'html5-blank');
-    register_post_type('html5-blank', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('HTML5 Blank Custom Post', 'html5blank'), // Rename these to suit
-            'singular_name' => __('HTML5 Blank Custom Post', 'html5blank'),
-            'add_new' => __('Add New', 'html5blank'),
-            'add_new_item' => __('Add New HTML5 Blank Custom Post', 'html5blank'),
-            'edit' => __('Edit', 'html5blank'),
-            'edit_item' => __('Edit HTML5 Blank Custom Post', 'html5blank'),
-            'new_item' => __('New HTML5 Blank Custom Post', 'html5blank'),
-            'view' => __('View HTML5 Blank Custom Post', 'html5blank'),
-            'view_item' => __('View HTML5 Blank Custom Post', 'html5blank'),
-            'search_items' => __('Search HTML5 Blank Custom Post', 'html5blank'),
-            'not_found' => __('No HTML5 Blank Custom Posts found', 'html5blank'),
-            'not_found_in_trash' => __('No HTML5 Blank Custom Posts found in Trash', 'html5blank')
+    /**
+     * prefix of meta keys (optional)
+     * Use underscore (_) at the beginning to make keys hidden
+     * Alt.: You also can make prefix empty to disable it
+     */
+    // Better has an underscore as last sign
+    $prefix = 'nimbus_';
+
+    // 1st meta box
+    $meta_boxes[] = array(
+        // Meta box id, UNIQUE per meta box. Optional since 4.1.5
+        'id'         => 'standard',
+
+        // Meta box title - Will appear at the drag and drop handle bar. Required.
+        'title'      => __( 'Slides', 'nimbus' ),
+
+        // Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
+        'post_types' => array( 'slider' ),
+
+        // Where the meta box appear: normal (default), advanced, side. Optional.
+        'context'    => 'normal',
+
+        // Order of meta box: high (default), low. Optional.
+        'priority'   => 'high',
+
+        // Auto save: true, false (default). Optional.
+        'autosave'   => true,
+
+        // List of meta fields
+        'fields'     => array(
+            // TEXT
+            array(
+                // Field name - Will be used as label
+                'name'  => __( 'Text', 'nimbus' ),
+                // Field ID, i.e. the meta key
+                'id'    => "{$prefix}text",
+                // Field description (optional)
+                'desc'  => __( 'Text description', 'nimbus' ),
+                'type'  => 'text',
+                // Default value (optional)
+                'std'   => __( 'Default text value', 'nimbus' ),
+                // CLONES: Add to make the field cloneable (i.e. have multiple value)
+                'clone' => true,
+            ),
+            // CHECKBOX
+            array(
+                'name' => __( 'Checkbox', 'nimbus' ),
+                'id'   => "{$prefix}checkbox",
+                'type' => 'checkbox',
+                // Value can be 0 or 1
+                'std'  => 1,
+            ),
+            // RADIO BUTTONS
+            array(
+                'name'    => __( 'Radio', 'nimbus' ),
+                'id'      => "{$prefix}radio",
+                'type'    => 'radio',
+                // Array of 'value' => 'Label' pairs for radio options.
+                // Note: the 'value' is stored in meta field, not the 'Label'
+                'options' => array(
+                    'value1' => __( 'Label1', 'nimbus' ),
+                    'value2' => __( 'Label2', 'nimbus' ),
+                ),
+            ),
+            // SELECT BOX
+            array(
+                'name'        => __( 'Select', 'nimbus' ),
+                'id'          => "{$prefix}select",
+                'type'        => 'select',
+                // Array of 'value' => 'Label' pairs for select box
+                'options'     => array(
+                    'value1' => __( 'Label1', 'nimbus' ),
+                    'value2' => __( 'Label2', 'nimbus' ),
+                ),
+                // Select multiple values, optional. Default is false.
+                'multiple'    => false,
+                'std'         => 'value2',
+                'placeholder' => __( 'Select an Item', 'nimbus' ),
+            ),
+            // HIDDEN
+            array(
+                'id'   => "{$prefix}hidden",
+                'type' => 'hidden',
+                // Hidden field must have predefined value
+                'std'  => __( 'Hidden value', 'nimbus' ),
+            ),
+            // PASSWORD
+            array(
+                'name' => __( 'Password', 'nimbus' ),
+                'id'   => "{$prefix}password",
+                'type' => 'password',
+            ),
+            // TEXTAREA
+            array(
+                'name' => __( 'Textarea', 'nimbus' ),
+                'desc' => __( 'Textarea description', 'nimbus' ),
+                'id'   => "{$prefix}textarea",
+                'type' => 'textarea',
+                'cols' => 20,
+                'rows' => 3,
+            ),
         ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'excerpt',
-            'thumbnail'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
-    ));
+        'validation' => array(
+            'rules'    => array(
+                "{$prefix}password" => array(
+                    'required'  => true,
+                    'minlength' => 7,
+                ),
+            ),
+            // optional override of default jquery.validate messages
+            'messages' => array(
+                "{$prefix}password" => array(
+                    'required'  => __( 'Password is required', 'nimbus' ),
+                    'minlength' => __( 'Password must be at least 7 characters', 'nimbus' ),
+                ),
+            )
+        )
+    );
+
+    // 2nd meta box
+    $meta_boxes[] = array(
+        'title'  => __( 'Advanced Fields', 'nimbus' ),
+
+        'fields' => array(
+            // HEADING
+            array(
+                'type' => 'heading',
+                'name' => __( 'Heading', 'nimbus' ),
+                'id'   => 'fake_id', // Not used but needed for plugin
+                'desc' => __( 'Optional description for this heading', 'nimbus' ),
+            ),
+            // SLIDER
+            array(
+                'name'       => __( 'Slider', 'nimbus' ),
+                'id'         => "{$prefix}slider",
+                'type'       => 'slider',
+
+                // Text labels displayed before and after value
+                'prefix'     => __( '$', 'nimbus' ),
+                'suffix'     => __( ' USD', 'nimbus' ),
+
+                // jQuery UI slider options. See here http://api.jqueryui.com/slider/
+                'js_options' => array(
+                    'min'  => 10,
+                    'max'  => 255,
+                    'step' => 5,
+                ),
+            ),
+            // NUMBER
+            array(
+                'name' => __( 'Number', 'nimbus' ),
+                'id'   => "{$prefix}number",
+                'type' => 'number',
+
+                'min'  => 0,
+                'step' => 5,
+            ),
+            // DATE
+            array(
+                'name'       => __( 'Date picker', 'nimbus' ),
+                'id'         => "{$prefix}date",
+                'type'       => 'date',
+
+                // jQuery date picker options. See here http://api.jqueryui.com/datepicker
+                'js_options' => array(
+                    'appendText'      => __( '(yyyy-mm-dd)', 'nimbus' ),
+                    'dateFormat'      => __( 'yy-mm-dd', 'nimbus' ),
+                    'changeMonth'     => true,
+                    'changeYear'      => true,
+                    'showButtonPanel' => true,
+                ),
+            ),
+            // DATETIME
+            array(
+                'name'       => __( 'Datetime picker', 'nimbus' ),
+                'id'         => $prefix . 'datetime',
+                'type'       => 'datetime',
+
+                // jQuery datetime picker options.
+                // For date options, see here http://api.jqueryui.com/datepicker
+                // For time options, see here http://trentrichardson.com/examples/timepicker/
+                'js_options' => array(
+                    'stepMinute'     => 15,
+                    'showTimepicker' => true,
+                ),
+            ),
+            // TIME
+            array(
+                'name'       => __( 'Time picker', 'nimbus' ),
+                'id'         => $prefix . 'time',
+                'type'       => 'time',
+
+                // jQuery datetime picker options.
+                // For date options, see here http://api.jqueryui.com/datepicker
+                // For time options, see here http://trentrichardson.com/examples/timepicker/
+                'js_options' => array(
+                    'stepMinute' => 5,
+                    'showSecond' => true,
+                    'stepSecond' => 10,
+                ),
+            ),
+            // COLOR
+            array(
+                'name' => __( 'Color picker', 'nimbus' ),
+                'id'   => "{$prefix}color",
+                'type' => 'color',
+            ),
+            // CHECKBOX LIST
+            array(
+                'name'    => __( 'Checkbox list', 'nimbus' ),
+                'id'      => "{$prefix}checkbox_list",
+                'type'    => 'checkbox_list',
+                // Options of checkboxes, in format 'value' => 'Label'
+                'options' => array(
+                    'value1' => __( 'Label1', 'nimbus' ),
+                    'value2' => __( 'Label2', 'nimbus' ),
+                ),
+            ),
+            // AUTOCOMPLETE
+            array(
+                'name'    => __( 'Autocomplete', 'nimbus' ),
+                'id'      => "{$prefix}autocomplete",
+                'type'    => 'autocomplete',
+                // Options of autocomplete, in format 'value' => 'Label'
+                'options' => array(
+                    'value1' => __( 'Label1', 'nimbus' ),
+                    'value2' => __( 'Label2', 'nimbus' ),
+                ),
+                // Input size
+                'size'    => 30,
+                // Clone?
+                'clone'   => false,
+            ),
+            // EMAIL
+            array(
+                'name' => __( 'Email', 'nimbus' ),
+                'id'   => "{$prefix}email",
+                'desc' => __( 'Email description', 'nimbus' ),
+                'type' => 'email',
+                'std'  => 'name@email.com',
+            ),
+            // RANGE
+            array(
+                'name' => __( 'Range', 'nimbus' ),
+                'id'   => "{$prefix}range",
+                'desc' => __( 'Range description', 'nimbus' ),
+                'type' => 'range',
+                'min'  => 0,
+                'max'  => 100,
+                'step' => 5,
+                'std'  => 0,
+            ),
+            // URL
+            array(
+                'name' => __( 'URL', 'nimbus' ),
+                'id'   => "{$prefix}url",
+                'desc' => __( 'URL description', 'nimbus' ),
+                'type' => 'url',
+                'std'  => 'http://google.com',
+            ),
+            // OEMBED
+            array(
+                'name' => __( 'oEmbed', 'nimbus' ),
+                'id'   => "{$prefix}oembed",
+                'desc' => __( 'oEmbed description', 'nimbus' ),
+                'type' => 'oembed',
+            ),
+            // SELECT ADVANCED BOX
+            array(
+                'name'        => __( 'Select', 'nimbus' ),
+                'id'          => "{$prefix}select_advanced",
+                'type'        => 'select_advanced',
+                // Array of 'value' => 'Label' pairs for select box
+                'options'     => array(
+                    'value1' => __( 'Label1', 'nimbus' ),
+                    'value2' => __( 'Label2', 'nimbus' ),
+                ),
+                // Select multiple values, optional. Default is false.
+                'multiple'    => false,
+                // 'std'         => 'value2', // Default value, optional
+                'placeholder' => __( 'Select an Item', 'nimbus' ),
+            ),
+            // TAXONOMY
+            array(
+                'name'    => __( 'Taxonomy', 'nimbus' ),
+                'id'      => "{$prefix}taxonomy",
+                'type'    => 'taxonomy',
+                'options' => array(
+                    // Taxonomy name
+                    'taxonomy' => 'category',
+                    // How to show taxonomy: 'checkbox_list' (default) or 'checkbox_tree', 'select_tree', select_advanced or 'select'. Optional
+                    'type'     => 'checkbox_list',
+                    // Additional arguments for get_terms() function. Optional
+                    'args'     => array()
+                ),
+            ),
+            // POST
+            array(
+                'name'        => __( 'Posts (Pages)', 'nimbus' ),
+                'id'          => "{$prefix}pages",
+                'type'        => 'post',
+                // Post type
+                'post_type'   => 'page',
+                // Field type, either 'select' or 'select_advanced' (default)
+                'field_type'  => 'select_advanced',
+                'placeholder' => __( 'Select an Item', 'nimbus' ),
+                // Query arguments (optional). No settings means get all published posts
+                'query_args'  => array(
+                    'post_status'    => 'publish',
+                    'posts_per_page' => - 1,
+                )
+            ),
+            // WYSIWYG/RICH TEXT EDITOR
+            array(
+                'name'    => __( 'WYSIWYG / Rich Text Editor', 'nimbus' ),
+                'id'      => "{$prefix}wysiwyg",
+                'type'    => 'wysiwyg',
+                // Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
+                'raw'     => false,
+                'std'     => __( 'WYSIWYG default value', 'nimbus' ),
+
+                // Editor settings, see wp_editor() function: look4wp.com/wp_editor
+                'options' => array(
+                    'textarea_rows' => 4,
+                    'teeny'         => true,
+                    'media_buttons' => false,
+                ),
+            ),
+            // DIVIDER
+            array(
+                'type' => 'divider',
+                'id'   => 'fake_divider_id', // Not used, but needed
+            ),
+            // FILE UPLOAD
+            array(
+                'name' => __( 'File Upload', 'nimbus' ),
+                'id'   => "{$prefix}file",
+                'type' => 'file',
+            ),
+            // FILE ADVANCED (WP 3.5+)
+            array(
+                'name'             => __( 'File Advanced Upload', 'nimbus' ),
+                'id'               => "{$prefix}file_advanced",
+                'type'             => 'file_advanced',
+                'max_file_uploads' => 4,
+                'mime_type'        => 'application,audio,video', // Leave blank for all file types
+            ),
+            // IMAGE UPLOAD
+            array(
+                'name' => __( 'Image Upload', 'nimbus' ),
+                'id'   => "{$prefix}image",
+                'type' => 'image',
+            ),
+            // THICKBOX IMAGE UPLOAD (WP 3.3+)
+            array(
+                'name' => __( 'Thickbox Image Upload', 'nimbus' ),
+                'id'   => "{$prefix}thickbox",
+                'type' => 'thickbox_image',
+            ),
+            // PLUPLOAD IMAGE UPLOAD (WP 3.3+)
+            array(
+                'name'             => __( 'Plupload Image Upload', 'nimbus' ),
+                'id'               => "{$prefix}plupload",
+                'type'             => 'plupload_image',
+                'max_file_uploads' => 4,
+            ),
+            // IMAGE ADVANCED (WP 3.5+)
+            array(
+                'name'             => __( 'Image Advanced Upload', 'nimbus' ),
+                'id'               => "{$prefix}imgadv",
+                'type'             => 'image_advanced',
+                'max_file_uploads' => 4,
+            ),
+            // BUTTON
+            array(
+                'id'   => "{$prefix}button",
+                'type' => 'button',
+                'name' => ' ', // Empty name will "align" the button to all field inputs
+            ),
+        )
+    );
+
+    return $meta_boxes;
 }
+
+
+
+
+/**
+ * Include the TGM_Plugin_Activation class.
+ */
+require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
+
+add_action( 'tgmpa_register', 'nimbus_register_required_plugins' );
+
+/**
+ * Register required plugins
+ * @return void
+ * @since  1.0
+ */
+function nimbus_register_required_plugins()
+{
+    $plugins = array(
+        array(
+            'name'               => 'Meta Box',
+            'slug'               => 'meta-box',
+            'required'           => true,
+            'force_activation'   => false,
+            'force_deactivation' => false,
+        ),
+        // You can add more plugins here if you want
+    );
+    $config  = array(
+        'domain'           => 'nimbus',
+        'default_path'     => '',
+        'parent_menu_slug' => 'themes.php',
+        'parent_url_slug'  => 'themes.php',
+        'menu'             => 'install-required-plugins',
+        'has_notices'      => true,
+        'is_automatic'     => false,
+        'message'          => '',
+        'strings'          => array(
+            'page_title'                      => __( 'Install Required Plugins', 'nimbus' ),
+            'menu_title'                      => __( 'Install Plugins', 'nimbus' ),
+            'installing'                      => __( 'Installing Plugin: %s', 'nimbus' ),
+            'oops'                            => __( 'Something went wrong with the plugin API.', 'nimbus' ),
+            'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ),
+            'notice_can_install_recommended'  => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ),
+            'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ),
+            'notice_can_activate_required'    => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.' ),
+            'notice_can_activate_recommended' => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.' ),
+            'notice_cannot_activate'          => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.' ),
+            'notice_ask_to_update'            => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.' ),
+            'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ),
+            'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
+            'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
+            'return'                          => __( 'Return to Required Plugins Installer', 'nimbus' ),
+            'plugin_activated'                => __( 'Plugin activated successfully.', 'nimbus' ),
+            'complete'                        => __( 'All plugins installed and activated successfully. %s', 'nimbus' ),
+            'nag_type'                        => 'updated',
+        )
+    );
+
+    tgmpa( $plugins, $config );
+}
+
+
+
+
+
 
 /*------------------------------------*\
 	ShortCode Functions
