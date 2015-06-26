@@ -1,7 +1,7 @@
 <?php 
 	$args = array(
-		'order'            => 'ASC',
-		'include'          => '',		
+		'order' 		   => 'ASC', 
+		'orderby' 		   => 'menu_order',
 		'post_type'        => 'page',		
 		'post_status'      => 'publish',		
 	);

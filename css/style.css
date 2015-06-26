@@ -1,6 +1,17 @@
+/*
+	Theme Name: Nimbus WP
+	Theme URI: http://github.com/tonetlds/nimbus
+	Version: 0.0.1
+	Author: Luciano Tonet (@tonetlds)
+	Author URI: http://lucianotonet.com	
+
+	License: MIT
+	License URI: http://opensource.org/licenses/mit-license.php
+*/
+
 /* Custom fonts */
-@import url('../fonts/ladyice/stylesheet.css');
-@import url('../fonts/nexa/stylesheet.css');
+@import url('fonts/ladyice/stylesheet.css');
+@import url('fonts/nexa/stylesheet.css');
 
 
 /* BASICS */
@@ -211,6 +222,7 @@ of those sections to manage the look and feel of the site. */
   font-size: 54px;
   color: #000;
   margin-top: 15%;
+  max-width: 240px;
 }
 #conheca h3{
   color: #393e51;
@@ -466,7 +478,7 @@ section#obrasconcluidas{
 #mapa{
   padding-top: 480px;
   height: 543px;
-  background: url(../img/mapa.jpg) no-repeat center center;
+  background: url(img/mapa.jpg) no-repeat center center;
 }
 #mapa .btn{  
   font-size: 18px;
