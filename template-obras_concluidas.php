@@ -1,56 +1,39 @@
 <?php // Template Name: Obras concluídas ?>
-
+<?php global $section; ?>
 	<!-- Obras concluídas -->
-	<section id="obrasconcluidas" class="obras-section">
+	<section id="obrasconcluidas" class="obras-section" style="background: <?php echo rwmb_meta( 'nimbus_bgcolor', $args = array(), $section->ID ) ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<h2>Obras concluídas</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ut tenetur ullam! Iusto deleniti doloremque voluptates id, repudiandae cupiditate placeat doloribus neque natus odit minus laborum, earum ad harum maxime.</p>
+					<h2><?php echo $section->post_title ?><hr></h2>
+					<br>
+					<p><?php echo $section->post_content ?></p>
 				</div>
 				<!-- carousel -->
 				<div class="col-md-9">
+					
+					<?php $images = rwmb_meta( 'nimbus_imgadv', 'type=image_advanced&multiple=image_advanced', $section->ID ); ?>					
+					<!-- <pre><?php print_r($images) ?></pre> -->
+					
 					<div id="obras_slider" class="slider">
 						<div class="slides">
-							<div class="slideItem">
-								<a href="#"> <img src="<?php echo get_template_directory_uri(); ?>/img/obras/slide_1.jpg"> </a>
-								<div class="legend">
-									<h4>Título slide</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, est, ducimus.</p>
+							<?php foreach ($images as $img) { ?>
+								<div class="slideItem">
+
+									<a href="<?php echo $img['full_url'] ?>">
+										<img src="<?php echo $img['full_url'] ?>" alt="<?php echo $img['alt'] ?>">
+									</a>
+									<div class="legend">
+										<h4><?php echo $img['title'] ?></h4>										
+										<p><?php echo $img['caption'] ?></p>
+									</div>
+
 								</div>
-							</div>
-							<div class="slideItem">
-								<a href="#"> <img src="<?php echo get_template_directory_uri(); ?>/img/obras/slide_1.jpg"> </a>
-								<div class="legend">
-									<h4>Título slide</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias .</p>
-								</div>
-							</div>
-							<div class="slideItem">
-								<a href="#"> <img src="<?php echo get_template_directory_uri(); ?>/img/obras/slide_1.jpg"> </a>
-								<div class="legend">
-									<h4>Título slide</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae amet reiciendis minima .</p>
-								</div>
-							</div>
-							<div class="slideItem">
-								<a href="#"> <img src="<?php echo get_template_directory_uri(); ?>/img/obras/slide_1.jpg"> </a>
-								<div class="legend">
-									<h4>Título slide</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae amet reiciendis minima .</p>
-								</div>
-							</div>
-							<div class="slideItem">
-								<a href="#"> <img src="<?php echo get_template_directory_uri(); ?>/img/obras/slide_1.jpg"> </a>
-								<div class="legend">
-									<h4>Título slide</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae amet reiciendis minima .</p>
-								</div>
-							</div>
+							<?php } ?>							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /Obras concluídas -->
+	<!-- /Obras concluídas -->			

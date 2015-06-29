@@ -85,14 +85,25 @@ of those sections to manage the look and feel of the site. */
 }
 
 .emandamento-section {
-    padding-top: 100px;
+    padding-top: 0px;
+}
+.emandamento-section .carousel .item{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.emandamento-section .carousel .item .photos{
+    /* min-width: 480px; */    
+    width: 480px;   
+    display: block;
+    margin: 0 auto;
 }
 
 .obras-section {
     padding-top: 100px;
 }
 .contato-section {
-    padding-top: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* SECTION SLIDER */
@@ -201,6 +212,7 @@ of those sections to manage the look and feel of the site. */
 
 #conheca{
   padding: 80px 0;
+  text-align: justify;
 }
 .carousel-indicators .active {
   margin: 0;
@@ -210,10 +222,10 @@ of those sections to manage the look and feel of the site. */
     border: none;
 }
 
-#conheca p {
-  margin-top: 20px;
-  font-size: 14px;
-  padding-right: 20px;
+#conheca {
+  line-height: 24px;
+  font-size: 16px;
+  padding-right: 0;
   text-align: justify;
   color: #5b5b5b;
 }
@@ -226,16 +238,20 @@ of those sections to manage the look and feel of the site. */
 }
 #conheca h3{
   color: #393e51;
-  line-height: 27px;
+  line-height: 34px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 26px;
   margin-bottom: 42px;
 }
 
 /* SECTION EM ANDAMENTO */
 
-#emandamento p {
-  
+#emandamento p {  
+  font-size: 16px;
+  font-family: "Nexa Light";  
+  line-height: 1.429;
+  text-align: left;
+
   color: #FFF;
   margin-top: 20px;
   float: left;
@@ -243,12 +259,20 @@ of those sections to manage the look and feel of the site. */
 #emandamento h1 {
   font-size: 37px;
   color: #fff;
-  margin-top: 15%;
+  margin-top: 23px;
+  text-transform: uppercase;
 }
-#emandamento h3 {
- font-size:18px;
+#emandamento h3 {  
+  /* font-size: 17px; */
+  font-family: "Nexa Regular";
+  color: rgb( 255, 255, 255 );
+  line-height: 1.176;
+
+ 
+  font-size:18px;
  float:left;
  width: 100%;
+ margin-bottom: 0px;
 }
 #emandamento .carousel .carousel-caption {
   /* left: 20%; */
@@ -299,27 +323,27 @@ of those sections to manage the look and feel of the site. */
   background-color: transparent;
 }
 .mansory{
-  position: absolute;
-  left: 15%;
-  right: 15%;
-  bottom: 20px;
+  /* position: relative; */
+  /* left: 15%; */
+  /* right: 15%; */
+  /* bottom: 20px; */
   z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 50px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 50px; */
 }
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
   line-height: 1;
   height: 100%;
 }
 .mansory{
-  position: absolute;
+  /* position: absolute; */
   /* left: 15%; */
   /* right: 15%; */
-  bottom: 20px;
-  z-index: 10;
+  /* bottom: 20px; */
+  /* z-index: 10; */
   /* padding-top: 20px; */
-  color: #fff;
-  text-align: center;
+  /* color: #fff; */
+  /* text-align: center; */
 
 }
 
@@ -329,10 +353,30 @@ section#obrasconcluidas{
   padding-top:40px;
   padding-bottom: 40px;
 }
+#obrasconcluidas h2{
+  font-size: 40px;
+  font-family: "Lady Ice Revisited Upper";
+  color: rgb( 131, 131, 131 );
+  text-transform:uppercase;
+  line-height: 1;
+  text-align: left;
+  max-width: 200px;
+}
+#obrasconcluidas p{
+  margin-top: 20px;
+}
 
-.carousel-control.left,.carousel-control.right  {background:none;width:25px;}
-.carousel-control.left {left:-25px;}
-.carousel-control.right {right:-25px;}
+.carousel-control.left, .carousel-control.right  {background:none;/* width: auto; */}
+.carousel-control.left img, .carousel-control.right img {
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  z-index: 5;
+  display: inline-block;
+  margin-left: -18px;
+}
+.carousel-control.left {/* left:-25px; */z-index: 1;/* position: absolute; */}
+.carousel-control.right {/* right:-25px; *//* z-index: 1; */}
 .broun-block {
     
     padding-bottom: 34px;
@@ -414,12 +458,13 @@ section#obrasconcluidas{
 #contato h2 {
   font-size: 54px;
   color: #fff;
-  margin-top: 15%;
+  margin-top: 40px;
+  max-width: 200px;
 }
 #contato hr {
   width: 80px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 0px;
+  margin-bottom: 24px;
   border: 0;
   border-top: 10px solid #89a7b1;
   float: left;
@@ -427,9 +472,12 @@ section#obrasconcluidas{
 #contato strong {
   color: #89a7b1;
   font-size: 24px;
+  display: block;
+  margin-top: 10px;
 }
 #contato p {
   color: #fff;
+  display: inline-block;
 }
 
 /* form */
@@ -439,7 +487,7 @@ section#obrasconcluidas{
 .form-area
 {
   padding: 10px 40px 60px;
-  margin: 10px 0px 60px;
+  /* margin: 10px 0px 60px; */
   color: #fff !important
   ;
  
@@ -464,7 +512,11 @@ section#obrasconcluidas{
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}.pull-right {
+}
+.wpcf7-not-valid{
+  border-color: red;
+}
+.pull-right {
   float: right !important;
   color: #000;
   padding: 10px;

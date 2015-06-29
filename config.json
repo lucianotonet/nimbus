@@ -387,6 +387,7 @@
     "forms.less",
     "buttons.less",
     "responsive-utilities.less",
+    "glyphicons.less",
     "button-groups.less",
     "navs.less",
     "navbar.less",
@@ -396,6 +397,7 @@
     "close.less",
     "component-animations.less",
     "dropdowns.less",
+    "modals.less",
     "carousel.less"
   ],
   "js": [
@@ -409,5 +411,5 @@
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=1073b0c0e8ab09a79187"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=a02a5bcb04cabacf604b"
 }

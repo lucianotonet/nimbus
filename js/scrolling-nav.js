@@ -10,9 +10,9 @@ $(window).scroll(function() {
 //jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
     $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
+        var $anchor = $(this);        
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: $($anchor.attr('href')).offset().top - 98
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });

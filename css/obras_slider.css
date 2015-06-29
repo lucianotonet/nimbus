@@ -34,7 +34,7 @@
   margin: 0 0px;
   border-radius: 2px;
   width: 266px;  
-  height: 436px !important;
+  /* height: 436px !important; */
 }
 
 #obras_slider .slides .slideItem .legend{

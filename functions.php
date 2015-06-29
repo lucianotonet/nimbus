@@ -1,10 +1,4 @@
 <?php
-/*
- *  Author: Todd Motto | @toddmotto
- *  URL: nimbus.com | @nimbus
- *  Custom functions, support, custom post types and more.
- */
-
 /*------------------------------------*\
 	External Modules/Files
 \*------------------------------------*/
@@ -88,12 +82,17 @@ function nimbus_nav()
 }
 
 // Load HTML5 Blank scripts (header.php)
-function nimbus_header_scripts()
+function nimbus_custom_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
         wp_register_script('nimbus', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('nimbus'); // Enqueue it!
+    }
+
+    if ( is_admin() ) {
+        wp_register_script('admin_js', get_template_directory_uri() . '/admin/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('admin_js'); // Enqueue it!       
     }
 }
 
@@ -104,7 +103,7 @@ function nimbus_styles()
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
     wp_enqueue_style('bootstrap'); // Enqueue it!
 
-    wp_register_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '1.0', 'all');
+    wp_register_style('fontawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '1.0', 'all');
     wp_enqueue_style('fontawesome'); // Enqueue it!
 
     wp_register_style('obras_slider', get_template_directory_uri() . '/css/obras_slider.css', array(), '1.0', 'all');
@@ -112,6 +111,11 @@ function nimbus_styles()
 
     wp_register_style('nimbus', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('nimbus'); // Enqueue it!
+
+    if ( is_admin() ) {
+        
+    }
+    
 }
 
 // Register HTML5 Blank Navigation
@@ -330,9 +334,8 @@ function nimbuscomments($comment, $args, $depth)
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
 \*------------------------------------*/
-
 // Add Actions
-add_action('init', 'nimbus_header_scripts'); // Add Custom Scripts to wp_head
+add_action('init', 'nimbus_custom_scripts'); // Add Custom Scripts to wp_head
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'nimbus_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
@@ -381,6 +384,7 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 
 // Shortcodes above would be nested like this -
 // [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]
+
 
 /*------------------------------------*\
 	Custom Post Types
@@ -461,10 +465,10 @@ function nimbus_register_meta_boxes( $meta_boxes )
     // 1st meta box
     $meta_boxes[] = array(
         // Meta box id, UNIQUE per meta box. Optional since 4.1.5
-        'id'         => 'standard',
+        'id'         => 'em_andamento',
 
         // Meta box title - Will appear at the drag and drop handle bar. Required.
-        'title'      => __( 'Slides', 'nimbus' ),
+        'title'      => __( 'Adicionais', 'nimbus' ),
 
         // Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
         'post_types' => array( 'page' ),
@@ -482,283 +486,40 @@ function nimbus_register_meta_boxes( $meta_boxes )
         'fields'     => array(
             // WYSIWYG/RICH TEXT EDITOR
             array(
-                'name'    => __( 'WYSIWYG / Rich Text Editor', 'nimbus' ),
-                'id'      => "{$prefix}wysiwyg",
+                'name'    => __( '', 'nimbus' ),
+                'id'      => $prefix."images",
                 'type'    => 'wysiwyg',
                 // Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
                 'raw'     => false,
-                'std'     => __( 'WYSIWYG default value', 'nimbus' ),
+                'std'     => __( '[gallery type="rectangular" size="full" link="file" ids=""]', 'nimbus' ),
 
                 // Editor settings, see wp_editor() function: look4wp.com/wp_editor
                 'options' => array(
-                    'textarea_rows' => 4,
+                    'textarea_rows' => 8,
                     'teeny'         => true,
-                    'media_buttons' => false,
+                    'media_buttons' => true,
                 ),
-            ),
-        )
-    );
-
-    // 2nd meta box
-    $meta_boxes[] = array(
-        'title'  => __( 'Advanced Fields', 'nimbus' ),
-
-        'fields' => array(
-            // HEADING
-            array(
-                'type' => 'heading',
-                'name' => __( 'Heading', 'nimbus' ),
-                'id'   => 'fake_id', // Not used but needed for plugin
-                'desc' => __( 'Optional description for this heading', 'nimbus' ),
-            ),
-            // SLIDER
-            array(
-                'name'       => __( 'Slider', 'nimbus' ),
-                'id'         => "{$prefix}slider",
-                'type'       => 'slider',
-
-                // Text labels displayed before and after value
-                'prefix'     => __( '$', 'nimbus' ),
-                'suffix'     => __( ' USD', 'nimbus' ),
-
-                // jQuery UI slider options. See here http://api.jqueryui.com/slider/
-                'js_options' => array(
-                    'min'  => 10,
-                    'max'  => 255,
-                    'step' => 5,
-                ),
-            ),
-            // NUMBER
-            array(
-                'name' => __( 'Number', 'nimbus' ),
-                'id'   => "{$prefix}number",
-                'type' => 'number',
-
-                'min'  => 0,
-                'step' => 5,
-            ),
-            // DATE
-            array(
-                'name'       => __( 'Date picker', 'nimbus' ),
-                'id'         => "{$prefix}date",
-                'type'       => 'date',
-
-                // jQuery date picker options. See here http://api.jqueryui.com/datepicker
-                'js_options' => array(
-                    'appendText'      => __( '(yyyy-mm-dd)', 'nimbus' ),
-                    'dateFormat'      => __( 'yy-mm-dd', 'nimbus' ),
-                    'changeMonth'     => true,
-                    'changeYear'      => true,
-                    'showButtonPanel' => true,
-                ),
-            ),
-            // DATETIME
-            array(
-                'name'       => __( 'Datetime picker', 'nimbus' ),
-                'id'         => $prefix . 'datetime',
-                'type'       => 'datetime',
-
-                // jQuery datetime picker options.
-                // For date options, see here http://api.jqueryui.com/datepicker
-                // For time options, see here http://trentrichardson.com/examples/timepicker/
-                'js_options' => array(
-                    'stepMinute'     => 15,
-                    'showTimepicker' => true,
-                ),
-            ),
-            // TIME
-            array(
-                'name'       => __( 'Time picker', 'nimbus' ),
-                'id'         => $prefix . 'time',
-                'type'       => 'time',
-
-                // jQuery datetime picker options.
-                // For date options, see here http://api.jqueryui.com/datepicker
-                // For time options, see here http://trentrichardson.com/examples/timepicker/
-                'js_options' => array(
-                    'stepMinute' => 5,
-                    'showSecond' => true,
-                    'stepSecond' => 10,
-                ),
-            ),
+            ),            
             // COLOR
             array(
-                'name' => __( 'Color picker', 'nimbus' ),
-                'id'   => "{$prefix}color",
+                'name' => __( 'Color de fundo', 'nimbus' ),
+                'id'   => $prefix."bgcolor",
                 'type' => 'color',
-            ),
-            // CHECKBOX LIST
-            array(
-                'name'    => __( 'Checkbox list', 'nimbus' ),
-                'id'      => "{$prefix}checkbox_list",
-                'type'    => 'checkbox_list',
-                // Options of checkboxes, in format 'value' => 'Label'
-                'options' => array(
-                    'value1' => __( 'Label1', 'nimbus' ),
-                    'value2' => __( 'Label2', 'nimbus' ),
-                ),
-            ),
-            // AUTOCOMPLETE
-            array(
-                'name'    => __( 'Autocomplete', 'nimbus' ),
-                'id'      => "{$prefix}autocomplete",
-                'type'    => 'autocomplete',
-                // Options of autocomplete, in format 'value' => 'Label'
-                'options' => array(
-                    'value1' => __( 'Label1', 'nimbus' ),
-                    'value2' => __( 'Label2', 'nimbus' ),
-                ),
-                // Input size
-                'size'    => 30,
-                // Clone?
-                'clone'   => false,
-            ),
-            // EMAIL
-            array(
-                'name' => __( 'Email', 'nimbus' ),
-                'id'   => "{$prefix}email",
-                'desc' => __( 'Email description', 'nimbus' ),
-                'type' => 'email',
-                'std'  => 'name@email.com',
-            ),
-            // RANGE
-            array(
-                'name' => __( 'Range', 'nimbus' ),
-                'id'   => "{$prefix}range",
-                'desc' => __( 'Range description', 'nimbus' ),
-                'type' => 'range',
-                'min'  => 0,
-                'max'  => 100,
-                'step' => 5,
-                'std'  => 0,
-            ),
-            // URL
-            array(
-                'name' => __( 'URL', 'nimbus' ),
-                'id'   => "{$prefix}url",
-                'desc' => __( 'URL description', 'nimbus' ),
-                'type' => 'url',
-                'std'  => 'http://google.com',
-            ),
-            // OEMBED
-            array(
-                'name' => __( 'oEmbed', 'nimbus' ),
-                'id'   => "{$prefix}oembed",
-                'desc' => __( 'oEmbed description', 'nimbus' ),
-                'type' => 'oembed',
-            ),
-            // SELECT ADVANCED BOX
-            array(
-                'name'        => __( 'Select', 'nimbus' ),
-                'id'          => "{$prefix}select_advanced",
-                'type'        => 'select_advanced',
-                // Array of 'value' => 'Label' pairs for select box
-                'options'     => array(
-                    'value1' => __( 'Label1', 'nimbus' ),
-                    'value2' => __( 'Label2', 'nimbus' ),
-                ),
-                // Select multiple values, optional. Default is false.
-                'multiple'    => false,
-                // 'std'         => 'value2', // Default value, optional
-                'placeholder' => __( 'Select an Item', 'nimbus' ),
-            ),
-            // TAXONOMY
-            array(
-                'name'    => __( 'Taxonomy', 'nimbus' ),
-                'id'      => "{$prefix}taxonomy",
-                'type'    => 'taxonomy',
-                'options' => array(
-                    // Taxonomy name
-                    'taxonomy' => 'category',
-                    // How to show taxonomy: 'checkbox_list' (default) or 'checkbox_tree', 'select_tree', select_advanced or 'select'. Optional
-                    'type'     => 'checkbox_list',
-                    // Additional arguments for get_terms() function. Optional
-                    'args'     => array()
-                ),
-            ),
-            // POST
-            array(
-                'name'        => __( 'Posts (Pages)', 'nimbus' ),
-                'id'          => "{$prefix}pages",
-                'type'        => 'post',
-                // Post type
-                'post_type'   => 'page',
-                // Field type, either 'select' or 'select_advanced' (default)
-                'field_type'  => 'select_advanced',
-                'placeholder' => __( 'Select an Item', 'nimbus' ),
-                // Query arguments (optional). No settings means get all published posts
-                'query_args'  => array(
-                    'post_status'    => 'publish',
-                    'posts_per_page' => - 1,
-                )
-            ),
-            // WYSIWYG/RICH TEXT EDITOR
-            array(
-                'name'    => __( 'WYSIWYG / Rich Text Editor', 'nimbus' ),
-                'id'      => "{$prefix}wysiwyg",
-                'type'    => 'wysiwyg',
-                // Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
-                'raw'     => false,
-                'std'     => __( 'WYSIWYG default value', 'nimbus' ),
-
-                // Editor settings, see wp_editor() function: look4wp.com/wp_editor
-                'options' => array(
-                    'textarea_rows' => 4,
-                    'teeny'         => true,
-                    'media_buttons' => false,
-                ),
-            ),
+                'std'  => '#151f39',
+            ),  
             // DIVIDER
             array(
                 'type' => 'divider',
                 'id'   => 'fake_divider_id', // Not used, but needed
-            ),
-            // FILE UPLOAD
-            array(
-                'name' => __( 'File Upload', 'nimbus' ),
-                'id'   => "{$prefix}file",
-                'type' => 'file',
-            ),
-            // FILE ADVANCED (WP 3.5+)
-            array(
-                'name'             => __( 'File Advanced Upload', 'nimbus' ),
-                'id'               => "{$prefix}file_advanced",
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 4,
-                'mime_type'        => 'application,audio,video', // Leave blank for all file types
-            ),
-            // IMAGE UPLOAD
-            array(
-                'name' => __( 'Image Upload', 'nimbus' ),
-                'id'   => "{$prefix}image",
-                'type' => 'image',
-            ),
-            // THICKBOX IMAGE UPLOAD (WP 3.3+)
-            array(
-                'name' => __( 'Thickbox Image Upload', 'nimbus' ),
-                'id'   => "{$prefix}thickbox",
-                'type' => 'thickbox_image',
-            ),
-            // PLUPLOAD IMAGE UPLOAD (WP 3.3+)
-            array(
-                'name'             => __( 'Plupload Image Upload', 'nimbus' ),
-                'id'               => "{$prefix}plupload",
-                'type'             => 'plupload_image',
-                'max_file_uploads' => 4,
-            ),
+            ),      
             // IMAGE ADVANCED (WP 3.5+)
             array(
                 'name'             => __( 'Image Advanced Upload', 'nimbus' ),
-                'id'               => "{$prefix}imgadv",
+                'id'               => $prefix."imgadv",
                 'type'             => 'image_advanced',
-                'max_file_uploads' => 4,
-            ),
-            // BUTTON
-            array(
-                'id'   => "{$prefix}button",
-                'type' => 'button',
-                'name' => ' ', // Empty name will "align" the button to all field inputs
-            ),
+                'max_file_uploads' => 10,
+            ),    
+            
         )
     );
 
@@ -790,6 +551,27 @@ function nimbus_register_required_plugins()
             'force_activation'   => false,
             'force_deactivation' => false,
         ),
+        array(
+            'name'               => 'Contact Form 7',
+            'slug'               => 'contact-form-7',
+            'required'           => true,
+            'force_activation'   => false,
+            'force_deactivation' => false,
+        ),
+        array(
+            'name'               => 'Simple Page Ordering',
+            'slug'               => 'simple-page-ordering',
+            'required'           => true,
+            'force_activation'   => false,
+            'force_deactivation' => false,
+        ),
+        array(
+            'name'               => 'Jetpack',
+            'slug'               => 'jetpack',
+            'required'           => true,
+            'force_activation'   => false,
+            'force_deactivation' => false,
+        )
         // You can add more plugins here if you want
     );
     $config  = array(

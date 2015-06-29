@@ -11,8 +11,7 @@
 				</a>
 			</div>
 			<!-- fim logo-->
-			<!-- menu -->
-			<div class="col-md-9 col-lg-9">
+			<!-- menu -->			
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden">
@@ -40,7 +39,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			
 			<!-- fim menu-->
 		</div>
 		<!-- /.container-->
