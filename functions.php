@@ -112,6 +112,10 @@ function nimbus_styles()
     wp_register_style('nimbus', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('nimbus'); // Enqueue it!
 
+    // RESPONSIVE
+    wp_register_style('responsive', get_template_directory_uri() . '/css/responsive.css', array(), '1.0', 'nimbus');
+    wp_enqueue_style('responsive'); // Enqueue it!
+
     if ( is_admin() ) {
         
     }
