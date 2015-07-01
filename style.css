@@ -42,9 +42,9 @@ hr {
 .logo {
   padding: 0px;
   float: left;
-  height: 125px;    
-  background-color: #393e51;  
-} 
+  height: 122px;
+  background-color: #393e51;
+}
 .navbar-fixed-top {
   background-color: #fff;
   height: 98px;
@@ -60,7 +60,7 @@ li.separator a {
 .navbar-nav > li {
   float: left;
   text-align: center;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 .navbar-nav>li>a {
   line-height: 16px;
@@ -111,11 +111,13 @@ of those sections to manage the look and feel of the site. */
 #header_slider{
 }
 #header_slider h1{
-  font-size: 60px;
+  font-size: 70px;
 }
-#header_slider p{
-  font-size: 22px;
+#header_slider p {
+  font-size: 29px;
+  line-height: 33px;
   font-weight: 200;
+  color: #ced0d2;
 }
 
 #header_slider hr {
@@ -127,15 +129,26 @@ of those sections to manage the look and feel of the site. */
   float: right;
 }
 
-.carousel-caption {
-  /* left: 20%; */
-  /* right: 20%; */
-  padding-bottom: 30px;
+
+
+#header_slider .carousel-caption {
+  position: absolute;
+  left: 64%;
+  /* right: 70%; */
+  bottom: 20%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
   text-align: right;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  width: 300px;
+  float: right;
 }
 .carousel-indicators {
   bottom: 20px;
   text-align: right;
+  left: 58%;
 }
 .carousel-indicators li {
   display: inline-block;
@@ -151,39 +164,16 @@ of those sections to manage the look and feel of the site. */
 #header_slider{
   /* margin-top: 98px; */
 }
-#header_slider hr {
+.divider1 {
   width: 120px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 22px;
+  margin-bottom: 22px;
   border: 0;
+  margin-left: 200px;
   border-top: 3px solid #ced0d2;
   float: right;
 }
-@media (max-width: 600px) {
-#header_slider hr {
-  width: 120px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  border: 0;
-  border-top: 3px solid #ced0d2;
-  float: none;
-}
-}
-.carousel-caption {
-  /* left: 20%; */
-  /* right: 20%; */
-  padding-bottom: 30px;
-  text-align: right;
-}
-@media (max-width: 600px) {
-#header_slider .carousel-caption {
-  left: 20%;
-  right: 20%;
-  padding-bottom: 30px;
-  text-align: center;
-  background-color: rgba(57, 62, 82, 0.89);
-}
-}
+
 
 .carousel-indicators {
   bottom: 20px;
@@ -191,8 +181,8 @@ of those sections to manage the look and feel of the site. */
 }
 .carousel-indicators li {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 18px;
+  height: 18px;
   margin: 1px;
   text-indent: -999px;
   background-color: #fff;
@@ -202,8 +192,8 @@ of those sections to manage the look and feel of the site. */
 }
 .carousel-indicators .active {
   margin: 0;
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   background-color: #c1c1c3;
     border: none;
 }
@@ -216,8 +206,8 @@ of those sections to manage the look and feel of the site. */
 }
 .carousel-indicators .active {
   margin: 0;
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   background-color: #c1c1c3;
     border: none;
 }
@@ -230,41 +220,44 @@ of those sections to manage the look and feel of the site. */
   color: #5b5b5b;
 }
 
+#conheca p{
+  text-align: left;
+  width: 340px;
+}
 #conheca h2{
-  font-size: 54px;
+  font-size: 65px;
   color: #000;
   margin-top: 15%;
   max-width: 240px;
 }
-#conheca h3{
+#conheca h3 {
   color: #393e51;
-  line-height: 34px;
+  line-height: 28px;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 27px;
   margin-bottom: 42px;
+  margin-top: 0;
+  width: 300px;
 }
 
 /* SECTION EM ANDAMENTO */
 
 #emandamento p {  
-  font-size: 16px;
-  font-family: "Nexa Light";  
+  font-size: 15px;
   line-height: 1.429;
   text-align: left;
-
-  color: #FFF;
+  color: #ced0d2;
   margin-top: 20px;
   float: left;
 }
+
 #emandamento h1 {
   font-size: 37px;
   color: #fff;
-  margin-top: 23px;
   text-transform: uppercase;
 }
 #emandamento h3 {  
   /* font-size: 17px; */
-  font-family: "Nexa Regular";
   color: rgb( 255, 255, 255 );
   line-height: 1.176;
 
@@ -280,14 +273,7 @@ of those sections to manage the look and feel of the site. */
   padding-bottom: 30px;
   text-align: left;
 }
-@media (max-width: 768px) {
-  #emandamento .carousel .carousel-caption {
-  left: 20%;
-  right: 20%;
-  padding-bottom: 300px;
-  text-align: left;
-}
-}
+
 #emandamento .carousel .carousel-caption h2 {
   font-size: 54px;
   margin-left: 45%;
@@ -306,12 +292,7 @@ of those sections to manage the look and feel of the site. */
   line-height: 1;
   height: 575px;
 }
-@media (max-width: 768px) {
-#emandamento .carousel-inner>.item>img, .carousel-inner>.item>a>img {
-  line-height: 1;
-  height: 1000px;
-}
-}
+
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
   line-height: 1;
   height: 500px;
@@ -334,6 +315,7 @@ of those sections to manage the look and feel of the site. */
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
   line-height: 1;
   height: 100%;
+  width: 100%;
 }
 .mansory{
   /* position: absolute; */
@@ -354,14 +336,14 @@ section#obrasconcluidas{
   padding-bottom: 40px;
 }
 #obrasconcluidas h2{
-  font-size: 40px;
-  font-family: "Lady Ice Revisited Upper";
+  font-size: 37px;
   color: rgb( 131, 131, 131 );
   text-transform:uppercase;
   line-height: 1;
   text-align: left;
   max-width: 200px;
 }
+
 #obrasconcluidas p{
   margin-top: 20px;
 }
@@ -456,14 +438,16 @@ section#obrasconcluidas{
 /* SECTION CONTATO */
 
 #contato h2 {
-  font-size: 54px;
+  font-size: 60px;
   color: #fff;
-  margin-top: 40px;
+  margin-top: 20px;
+  /* padding-bottom: 30px; */
+  /* margin-bottom: 20px; */
   max-width: 200px;
 }
 #contato hr {
   width: 80px;
-  margin-top: 0px;
+  margin-top: 15px;
   margin-bottom: 24px;
   border: 0;
   border-top: 10px solid #89a7b1;
@@ -471,13 +455,20 @@ section#obrasconcluidas{
 }
 #contato strong {
   color: #89a7b1;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 800;
   display: block;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 #contato p {
-  color: #fff;
+  color: rgb(229, 232, 233);
   display: inline-block;
+  font-family: nexa;
+  /* font-weight: 300; */
+  line-height: 22px;
+  font-size: 19px;
+  /* margin-bottom: 30px; */
 }
 
 /* form */
@@ -499,8 +490,9 @@ section#obrasconcluidas{
   display: block;
   width: 100%;
   height: 38px;
-  padding: 6px 12px;
-  font-size: 16px;
+  padding: 25px 12px;
+  margin-bottom: 10px;
+  font-size: 19px;
   line-height: 1.5;
   color: #fff;
   background-color: transparent;
@@ -513,8 +505,24 @@ section#obrasconcluidas{
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.wpcf7-not-valid{
-  border-color: red;
+::-webkit-input-placeholder { color: #fff !important; }
+input:-moz-placeholder { color: #fff !important; }
+textarea:-moz-placeholder { color: #fff !important; }
+
+textarea.form-control {
+  height: 200px;
+}
+div.wpcf7 img.ajax-loader {
+  border: none;
+  vertical-align: middle;
+  margin-left: -16px;
+  /* position: inherit; */
+}
+.btn-default {
+  padding: 15px 30px;
+  font-size: 19px;
+  font-weight: 900;
+  color: rgb(49, 57, 79);
 }
 .pull-right {
   float: right !important;
@@ -543,4 +551,8 @@ section#obrasconcluidas{
 /* FOOTER */
 footer{
   background: #fff;
+}
+footer p {
+  font-size: 14px;
+  color: rgb(114, 119, 132);
 }

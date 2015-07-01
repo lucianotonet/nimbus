@@ -25,6 +25,27 @@
                 speed: 700,
                 buttonNav: 'none',
             });
+            // Obras Slider
+            //  ->  http://www.jqueryscript.net/slideshow/Coverflow-Style-Image-Carousel-Plugin-For-jQuery-Carousel-Evolution.html
+            jQuery('#obras_slider2').carousel({
+                carouselWidth: 180,        
+                carouselHeight: 250,
+                frontWidth: 180,
+                frontHeight: 220,
+                directionNav: true,
+                reflection: false,
+                // shadow: false,
+                // buttonNav: false,
+                description: false,
+                descriptionContainer: $('.legend'),
+                autoplay: false,
+                autoplayInterval: 3000,
+                backZoom: 0.9,
+                backOpacity: 0.15,
+                slidesPerScroll: 2,
+                speed: 700,
+                buttonNav: 'none',
+            });
 
 
             // jQuery('#characterLeft').text('140 characters left');

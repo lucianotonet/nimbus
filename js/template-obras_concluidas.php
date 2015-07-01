@@ -10,37 +10,12 @@
 					<p><?php echo $section->post_content ?></p>
 				</div>
 				<!-- carousel -->
-				<div class="hidden-xs hidden-sm col-md-8 col-lg-8">
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 					
 					<?php $images = rwmb_meta( 'nimbus_imgadv', 'type=image_advanced&multiple=image_advanced', $section->ID ); ?>					
 					<!-- <pre><?php print_r($images) ?></pre> -->
 					
 					<div id="obras_slider" class="slider">
-						<div class="slides">
-							<?php foreach ($images as $img) { ?>
-								<div class="slideItem">
-
-									<a href="<?php echo $img['full_url'] ?>">
-										<img src="<?php echo $img['full_url'] ?>" alt="<?php echo $img['alt'] ?>">
-									</a>
-									<div class="legend">
-										<h4><?php echo $img['title'] ?></h4>										
-										<p><?php echo $img['caption'] ?></p>
-									</div>
-
-								</div>
-							<?php } ?>							
-						</div>
-					</div>
-				</div>
-
-				<!-- carousel -->
-				<div class="col-xs-12 col-sm-12 hidden-md hidden-lg">
-					
-					<?php $images = rwmb_meta( 'nimbus_imgadv', 'type=image_advanced&multiple=image_advanced', $section->ID ); ?>					
-					<!-- <pre><?php print_r($images) ?></pre> -->
-					
-					<div id="obras_slider2" class="slider">
 						<div class="slides">
 							<?php foreach ($images as $img) { ?>
 								<div class="slideItem">
