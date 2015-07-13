@@ -506,7 +506,7 @@ function nimbus_register_meta_boxes( $meta_boxes )
             ),            
             // COLOR
             array(
-                'name' => __( 'Color de fundo', 'nimbus' ),
+                'name' => __( 'Cor de fundo', 'nimbus' ),
                 'id'   => $prefix."bgcolor",
                 'type' => 'color',
                 'std'  => '#151f39',
@@ -518,7 +518,7 @@ function nimbus_register_meta_boxes( $meta_boxes )
             ),      
             // IMAGE ADVANCED (WP 3.5+)
             array(
-                'name'             => __( 'Image Advanced Upload', 'nimbus' ),
+                'name'             => __( 'Imagens', 'nimbus' ),
                 'id'               => $prefix."imgadv",
                 'type'             => 'image_advanced',
                 'max_file_uploads' => 10,
@@ -633,4 +633,22 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
-?>
+
+add_action('admin_init', 'remove_menus');
+function remove_menus(){
+    if(!current_user_can('add_users')){
+        remove_menu_page('jetpack');
+        remove_menu_page('wpcf7');
+    }
+}
+
+if ( ! function_exists( 'unregister_post_type' ) ) :
+function unregister_post_type( $post_type ) {
+    global $wp_post_types;
+    if ( isset( $wp_post_types[ $post_type ] ) ) {
+        unset( $wp_post_types[ $post_type ] );
+        return true;
+    }
+    return false;
+}
+endif;

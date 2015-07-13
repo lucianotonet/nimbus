@@ -1,7 +1,7 @@
 <?php // Template Name: Empreendimentos em andamento ?>
 <!-- Empreendimentos em andamento -->
 <section id="emandamento" class="emandamento-section">
-	<div id="slider_emandamento" class="carousel slide" data-ride="carousel">
+	<div id="slider_emandamento" class="carousel slide" data-ride="carousel" data-interval="false">
 		<div class="carousel-inner">
 			<?php 
 			global $section;			
@@ -29,20 +29,22 @@
 							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 								&nbsp;
 							</div>	
-							<div class="col-sm-3 col-md-3 col-lg-3">									
-								<h1><?php echo $section->post_title ?></br><hr></br>
-									<a class="navbar-brand logo" href="#header" style"background:transparent;">
-										<?php 
-										echo get_the_post_thumbnail( $subpage->ID, 'full' );										
-										?>
-										<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" alt="Logo" class="img-responsive"> -->
-									</a>
-								</h1>
+							<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+								<div class="content-left">									
+									<h1><?php echo $section->post_title ?></br><hr></br>
+										<a class="navbar-brand logo" href="#header" style"background:transparent;">
+											<?php 
+											echo get_the_post_thumbnail( $subpage->ID, 'full' );										
+											?>
+											<!-- <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" alt="Logo" class="img-responsive"> -->
+										</a>
+									</h1>
 
-								<?php echo apply_filters('the_content', $subpage->post_content); ?>								
+									<?php echo apply_filters('the_content', $subpage->post_content); ?>								
+								</div>
 							</div>						
 
-							<div class="col-sm-7 col-md-7 col-lg-7">							
+							<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">							
 								<div class="photos">
 									<?php echo apply_filters('the_content', rwmb_meta( 'nimbus_images', $args = array(), $subpage->ID ) ); ?>																
 								</div>								

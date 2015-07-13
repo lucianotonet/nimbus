@@ -69,14 +69,16 @@
   border: 2px solid #fff;
 }
 #obras_slider .slides .slideItem .legend h4 {
-    font-size: 22px;    font-family: "Nexa Heavy";    color: rgb( 57, 62, 81 );    line-height: 0.727;    text-align: center;
+    font-size: 22px;        font-family: "nexa", serif;
+    color: rgb( 57, 62, 81 );    line-height: 0.727;    text-align: center;
 }
 #obras_slider .slides .slideItem .legend p{
   font-size: 16px;
-  font-family: "Nexa Regular";
+  /* font-family: "Nexa Regular"; */
   color: rgb( 151, 151, 153 );
   line-height: 1.125;
   text-align: center;
+  font-family: "nexa", serif;
 }
 
 /* _______________________________________________ */

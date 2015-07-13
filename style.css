@@ -84,15 +84,16 @@ of those sections to manage the look and feel of the site. */
     padding-top: 100px;
 }
 
+
 .emandamento-section {
-    padding-top: 0px;
 }
+
 .emandamento-section .carousel .item{
     padding-top: 40px;
     padding-bottom: 40px;
 }
 .emandamento-section .carousel .item .photos{
-    /* min-width: 480px; */    
+    /* min-width: 480px; */   
     width: 480px;   
     display: block;
     margin: 0 auto;
@@ -112,6 +113,9 @@ of those sections to manage the look and feel of the site. */
 }
 #header_slider h1{
   font-size: 70px;
+  text-transform: uppercase;
+  max-width: 200px;
+  display: inline-block;
 }
 #header_slider p {
   font-size: 29px;
@@ -130,25 +134,29 @@ of those sections to manage the look and feel of the site. */
 }
 
 
-
-#header_slider .carousel-caption {
-  position: absolute;
-  left: 64%;
-  /* right: 70%; */
-  bottom: 20%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-align: right;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-  width: 300px;
+.caption {
+  max-width: 300px;
   float: right;
+  margin-bottom: 20px;
+}
+#header_slider .carousel-caption {
+  /* position: absolute; */
+  /* left: 64%; */
+  /* right: 0; */
+  /* bottom: 20%; */
+  /* z-index: 10; */
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px; */
+  /* color: #fff; */
+  text-align: right;
+  /* text-shadow: 0 1px 2px rgba(0,0,0,0.6); */
+  width: 65%;
+  /* float: right; */
 }
 .carousel-indicators {
-  bottom: 20px;
-  text-align: right;
-  left: 58%;
+  /* bottom: 20px; */
+  /* text-align: right; */
+  /* left: 58%; */
 }
 .carousel-indicators li {
   display: inline-block;
@@ -178,6 +186,16 @@ of those sections to manage the look and feel of the site. */
 .carousel-indicators {
   bottom: 20px;
   text-align: right;
+  width: 65%;
+  /* position: absolute; */;        
+  /* left: 0; */    
+  /* z-index: 15; */        
+  /* margin-left: 0; */    
+  /* padding-left: 0; */    
+  /* list-style: none; */    
+  /* padding-left: 15px; */    
+  /* padding-right: 15px; */
+  /* left: 0; */
 }
 .carousel-indicators li {
   display: inline-block;
@@ -238,6 +256,7 @@ of those sections to manage the look and feel of the site. */
   margin-bottom: 42px;
   margin-top: 0;
   width: 300px;
+  text-align: left;
 }
 
 /* SECTION EM ANDAMENTO */
@@ -452,6 +471,7 @@ section#obrasconcluidas{
   border: 0;
   border-top: 10px solid #89a7b1;
   float: left;
+  margin-right: 300px;
 }
 #contato strong {
   color: #89a7b1;
@@ -472,6 +492,9 @@ section#obrasconcluidas{
 }
 
 /* form */
+#contato a {
+  color: rgb(229, 232, 233);
+}
 .red{
     color:red;
     }
@@ -505,12 +528,22 @@ section#obrasconcluidas{
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.wpcf7-not-valid{
+  border: red solid 1px;
+  margin-bottom: 0px;
+}
 ::-webkit-input-placeholder { color: #fff !important; }
 input:-moz-placeholder { color: #fff !important; }
 textarea:-moz-placeholder { color: #fff !important; }
 
 textarea.form-control {
   height: 200px;
+  resize: none;
+}
+div.wpcf7-validation-errors {
+  border: 2px solid #f7e700;
+  text-align: center;
+  background-color: #f7e700;
 }
 div.wpcf7 img.ajax-loader {
   border: none;
@@ -539,12 +572,19 @@ div.wpcf7 img.ajax-loader {
   padding-top: 480px;
   height: 543px;
   background: url(img/mapa.jpg) no-repeat center center;
+  z-index: 1;
 }
-#mapa .btn{  
-  font-size: 18px;
-  font-family: "Nexa Regular";
+section.mapa-bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: url(images/map-gradient.png) repeat-x bottom center;
+  /* margin-top: -86px; */
+}
+section.mapa-bottom .btn{  
+  font-size: 18px;  
   color: rgb( 255, 255, 255 );
-  line-height: 1.889;  
+  padding-left: 20px;
+  padding-right: 20px;  
 }
 
 
