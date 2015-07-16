@@ -103,6 +103,7 @@ function nimbus_styles()
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0', 'all');
     wp_enqueue_style('bootstrap'); // Enqueue it!
 
+    
     wp_register_style('fontawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '1.0', 'all');
     wp_enqueue_style('fontawesome'); // Enqueue it!
 
@@ -111,6 +112,7 @@ function nimbus_styles()
 
     wp_register_style('nimbus', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('nimbus'); // Enqueue it!
+
 
     // RESPONSIVE
     wp_register_style('responsive', get_template_directory_uri() . '/css/responsive.css', array(), '1.0', 'all');

@@ -44,7 +44,7 @@
 					</li>
 					<li class="hidden-xs">
 						<a href="https://www.facebook.com/pages/Construtora-Nimbus/744735355538392" target="_new">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/facebook.png" alt="facebook" class="img-responsive">
+							<div class="face"><i class="icon-facebook icon-2x"></i></div>
 						</a>
 					</li>
 				</ul>

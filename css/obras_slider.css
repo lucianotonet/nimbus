@@ -69,16 +69,23 @@
   border: 2px solid #fff;
 }
 #obras_slider .slides .slideItem .legend h4 {
-    font-size: 22px;        font-family: "nexa", serif;
-    color: rgb( 57, 62, 81 );    line-height: 0.727;    text-align: center;
+  font-size: 22px;
+  margin-bottom: 5px;
+  font-weight: 900;
+  font-family: "nexa", serif;
+  color: rgb( 57, 62, 81 );
+  line-height: 0.727;
+  text-align: center;
 }
-#obras_slider .slides .slideItem .legend p{
+#obras_slider .slides .slideItem .legend p {
   font-size: 16px;
+  font-weight: 900;
   /* font-family: "Nexa Regular"; */
   color: rgb( 151, 151, 153 );
   line-height: 1.125;
   text-align: center;
   font-family: "nexa", serif;
+  margin-top: 5px !important;
 }
 
 /* _______________________________________________ */
@@ -296,11 +303,12 @@
   border: 2px solid #fff;
 }
 #obras_slider2 .slides .slideItem .legend h4 {
-    font-size: 22px;    font-family: "Nexa Heavy";    color: rgb( 57, 62, 81 );    line-height: 0.727;    text-align: center;
+    font-size: 22px;    
+    font-family: nexa;    color: rgb( 57, 62, 81 );    line-height: 0.727;    text-align: center;
 }
 #obras_slider2 .slides .slideItem .legend p{
   font-size: 16px;
-  font-family: "Nexa Regular";
+  font-family: nexa;
   color: rgb( 151, 151, 153 );
   line-height: 1.125;
   text-align: center;
