@@ -56,7 +56,7 @@ hr {
 .navbar-right {
   float: right !important;
   margin-right: -15px;
-  margin-top: 15px;
+  margin-top: 22px;
 }
 .navbar-toggle {
   /* position: relative; */
@@ -85,11 +85,12 @@ li.separator a {
   font-size: 1.4em;
 }
 .face {
-  width: 28px;
-  height: 28px;
-  border: 2px solid #909194;
+  width: 37px;
+  height: 37px;
+  border: 1px solid #909194;
   border-radius: 50px;
-  padding-top: 5px;
+  padding-top: 9px;
+  margin-top:-3px;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
   color: #2b2f3e;
@@ -115,8 +116,9 @@ of those sections to manage the look and feel of the site. */
 }
 
 .emandamento-section .carousel .item{
-    padding-top: 40px;
+    padding-top: 90px;
     padding-bottom: 40px;
+	height:545px;
 }
 .emandamento-section .carousel .item .photos {
   /* min-width: 480px; */
@@ -360,8 +362,8 @@ of those sections to manage the look and feel of the site. */
 }
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
   line-height: 1;
-  height: 100%;
-  width: 100%;
+  height: 530px;
+  width: 1300px;
 }
 .mansory{
   /* position: absolute; */
@@ -514,7 +516,7 @@ section#obrasconcluidas {
   font-family: nexa;
   /* font-weight: 300; */
   line-height: 22px;
-  font-size: 19px;
+  font-size: 16px;
   /* margin-bottom: 30px; */
 }
 
@@ -543,8 +545,8 @@ section#obrasconcluidas {
 .form-control {
   display: block;
   width: 100%;
-  height: 38px;
-  padding: 25px 12px;
+  height: 55px;
+  padding: 10px 12px;
   margin-bottom: 10px;
   font-size: 19px;
   line-height: 1.5;
@@ -576,11 +578,16 @@ section#obrasconcluidas {
 .form-control::-moz-placeholder {  /* Firefox 19+ */
   color: #fff;
   opacity: 1;
+  display:visible;
 }
  
 .form-control:-ms-input-placeholder { /* IE10+ */ 
   color: #fff;  
+
 }
+
+
+
 /*::-webkit-input-placeholder { color: #fff !important; }
 input::-moz-placeholder { color: #fff !important; }
 textarea::-moz-placeholder { color: #fff !important; }*/
@@ -590,9 +597,9 @@ textarea.form-control {
   resize: none;
 }
 div.wpcf7-validation-errors {
-  border: 2px solid #f7e700;
+  border: none;
   text-align: center;
-  background-color: #f7e700;
+  color:red;
 }
 div.wpcf7 img.ajax-loader {
   border: none;

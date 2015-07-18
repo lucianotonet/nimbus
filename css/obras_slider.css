@@ -67,6 +67,7 @@
   width : 100%;
   height : 100%;
   border: 2px solid #fff;
+  cursor:auto;
 }
 #obras_slider .slides .slideItem .legend h4 {
   font-size: 22px;

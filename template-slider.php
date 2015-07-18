@@ -25,7 +25,7 @@
     </div>
 
 
-	<div class="carousel-inner">
+	<div class="carousel-inner" style="height:530px;">
 		<?php
 			for ($i = 0; $i < count($subpages); $i++) { 
 				$subpage = $subpages[ $i ];

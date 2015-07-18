@@ -4,6 +4,7 @@
       background-color: #fff;
       padding-top: 82px;
     }
+    
     .navbar-fixed-top {
       background-color: #fff;
       height: 82px;
@@ -199,17 +200,17 @@
 }
 @media (max-width: 568px) {
     .navbar-toggle {
-      /* position: relative; */
-      float: right;
-      /* display: inline-table; */
-      padding: 9px 10px;
-      margin: 25px 15px 10px auto;
-      /* margin-right: -10px; */
-      background-color: transparent;
-      background-image: none;
-      border: 1px solid transparent;
-      border-radius: 0;
-    }
+  /* position: relative; */
+  float: right;
+  /* display: inline-table; */
+  padding: 9px 10px;
+  margin: 22px 60px 10px auto;
+  /* margin-right: -10px; */
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+}
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
             border-color: #E2E2E2;
             background-color: #EBEBEB;

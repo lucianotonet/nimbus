@@ -20,9 +20,9 @@
 							<?php foreach ($images as $img) { ?>
 								<div class="slideItem">
 
-									<a href="<?php echo $img['full_url'] ?>">
+									
 										<img src="<?php echo $img['full_url'] ?>" alt="<?php echo $img['alt'] ?>">
-									</a>
+									
 									<div class="legend">
 										<h4><?php echo $img['title'] ?></h4>										
 										<p><?php echo $img['caption'] ?></p>
